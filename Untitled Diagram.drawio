@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-22T15:20:09.128Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" etag="H-Qev7lafPjmSseebEHF" version="21.0.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-22T16:43:32.685Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15" etag="6ZSwx1lx_3h4AfHraoVd" version="21.0.8" type="github">
   <diagram id="I1XcE-9HtQLq3ge9rlt2" name="Page-1">
     <mxGraphModel dx="2452" dy="1851" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -58,7 +58,7 @@
           <mxGeometry y="262" width="280" height="26" as="geometry" />
         </mxCell>
         <mxCell id="13QCqr6SBTLlew1oNA5X-18" value="&lt;i&gt;Account&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-300" y="-320" width="240" height="346" as="geometry" />
+          <mxGeometry x="-300" y="-320" width="240" height="294" as="geometry" />
         </mxCell>
         <mxCell id="13QCqr6SBTLlew1oNA5X-19" value="- userName: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="13QCqr6SBTLlew1oNA5X-18" vertex="1">
           <mxGeometry y="26" width="240" height="26" as="geometry" />
@@ -92,12 +92,6 @@
         </mxCell>
         <mxCell id="13QCqr6SBTLlew1oNA5X-118" value="+ despositMoney(int deposit)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="13QCqr6SBTLlew1oNA5X-18" vertex="1">
           <mxGeometry y="268" width="240" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="gk3prSJLdi4CNW6tawGF-47" value="+ addToBalance(payOut())" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="13QCqr6SBTLlew1oNA5X-18" vertex="1">
-          <mxGeometry y="294" width="240" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="gk3prSJLdi4CNW6tawGF-48" value="+ subToBalane(placeBet())" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="13QCqr6SBTLlew1oNA5X-18" vertex="1">
-          <mxGeometry y="320" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="13QCqr6SBTLlew1oNA5X-36" value="Roulette&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Extends Account&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;implements Player Interface&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Implements Game Interface&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Implements Gambler Interface" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=88;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-1390" y="120" width="280" height="338" as="geometry" />
