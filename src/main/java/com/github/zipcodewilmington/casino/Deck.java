@@ -1,12 +1,13 @@
 package com.github.zipcodewilmington.casino;
 
-import com.github.zipcodewilmington.casino.Card;
 
+import com.github.zipcodewilmington.casino.Card;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
 public class Deck {
+
     Card.Suit suit;
     Card.Rank rank;
     List<Card> cards;
@@ -30,4 +31,5 @@ public class Deck {
             card.toString();
         }
     }
+
 }

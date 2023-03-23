@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Dice {
+
     private List<Dice> diceValues;
 
     public Integer diceRoll(){
