@@ -1,4 +1,4 @@
-package com.github.zipcodewilmington.casino.games.slots;
+package com.github.zipcodewilmington.casino.games.Roulette;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.PlayerInterface;
@@ -6,15 +6,17 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 /**
  * Created by leon on 7/21/2020.
  */
-public class SlotsPlayer extends CasinoAccount implements PlayerInterface {
+public class RoulettePlayer extends CasinoAccount implements PlayerInterface {
     CasinoAccount casinoAccount;
 
-    public SlotsPlayer(CasinoAccount casinoAccount){
+    public RoulettePlayer(CasinoAccount casinoAccount){
+
         super(casinoAccount);
     }
 
     @Override
     public CasinoAccount getArcadeAccount() {
+
         return this;
     }
 

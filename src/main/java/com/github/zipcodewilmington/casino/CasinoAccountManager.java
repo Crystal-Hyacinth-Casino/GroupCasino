@@ -5,42 +5,63 @@ package com.github.zipcodewilmington.casino;
  * `ArcadeAccountManager` stores, manages, and retrieves `ArcadeAccount` objects
  * it is advised that every instruction in this class is logged
  */
+import com.github.zipcodewilmington.Casino;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class CasinoAccountManager {
-    /**
-     * @param accountName     name of account to be returned
-     * @param accountPassword password of account to be returned
-     * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
-     */
-    public CasinoAccount getAccount(String accountName, String accountPassword) {
-        String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-        String currentClassName = getClass().getName();
-        String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";
-        throw new RuntimeException(String.format(errorMessage, currentMethodName, currentClassName));
-    }
+    public static final String ANSI_RED = "\u001B[31m";
+    static Scanner input = new Scanner(System.in);
 
-    /**
-     * logs & creates a new `ArcadeAccount`
-     *
-     * @param accountName     name of account to be created
-     * @param accountPassword password of account to be created
-     * @return new instance of `ArcadeAccount` with specified `accountName` and `accountPassword`
-     */
-    public CasinoAccount createAccount(String accountName, String accountPassword) {
-        String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-        String currentClassName = getClass().getName();
-        String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";
-        throw new RuntimeException(String.format(errorMessage, currentMethodName, currentClassName));
-    }
 
-    /**
-     * logs & registers a new `ArcadeAccount` to `this.getArcadeAccountList()`
-     *
-     * @param casinoAccount the arcadeAccount to be added to `this.getArcadeAccountList()`
-     */
-    public void registerAccount(CasinoAccount casinoAccount) {
-        String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-        String currentClassName = getClass().getName();
-        String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";
-        throw new RuntimeException(String.format(errorMessage, currentMethodName, currentClassName));
+
+
+    public static ArrayList<CasinoAccount> accountList = new ArrayList<CasinoAccount>();
+
+
+    public static CasinoAccount createAccount() {
+
+        CasinoAccount newAccount = null;
+
+        System.out.println(ANSI_RED+ "Please pick a username");
+        String user = input.next();
+
+        System.out.println(ANSI_RED + "Please input a password");
+        String pass = input.next();
+
+        boolean x = true;
+
+        while (x) {
+            int bal = Casino.getNumber(ANSI_RED + "How much do you want to deposit?"); // method asks how much a user wants to add
+
+            if (bal > 0) {
+                newAccount = new CasinoAccount(user, pass, bal);
+
+
+                x = false;
+            } else {
+                System.out.println("Sorry you don't have enough money");
+            }
+        }
+
+
+        System.out.println("Your account has been created");
+
+        Casino.delay();
+
+        System.out.println("Returning to Main Menu");
+
+        Casino.delay();
+
+
+        //console.mainMenu();
+
+
+        accountList.add(newAccount);
+
+
+        return newAccount;
+
     }
 }
