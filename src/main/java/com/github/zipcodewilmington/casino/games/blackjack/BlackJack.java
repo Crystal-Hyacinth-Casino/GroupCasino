@@ -23,10 +23,16 @@ public class BlackJack implements GameInterface {
 
         System.out.println("Thank you. Good luck!");
 
+        //Each player's hand is represented by another ArrayList of Card objects.
+        // adds the playerInitialHand to the playerHands list, so that it becomes the first hand in the list.
+
+
         ArrayList<ArrayList<Card>> playerHands = new ArrayList<ArrayList<Card>>();
         ArrayList<Card> playerInitialHand = new ArrayList<Card>();
         playerHands.add(playerInitialHand);
 
+
+        // creates a new Deck object
         ArrayList<Card> dealerHand = new ArrayList<Card>();
         Deck deck = new Deck();
         deck.shuffle();
@@ -37,7 +43,8 @@ public class BlackJack implements GameInterface {
         playerHands.get(0).add(deck.draw());
         dealerHand.add(deck.draw());
 
-        //prompt for split or double
+       //loops through each Card in the ArrayList representing the first player's hand (index 0 in the playerHands list),
+        // and for each Card, calls toString() method to get a string representation of the card
         boolean validAction = false;
         boolean hit = true;
         boolean doubleDown = false;
@@ -57,6 +64,12 @@ public class BlackJack implements GameInterface {
                     playerHands.get(0).add(deck.draw());
                     hit = false;
                     break;
+
+               //creates a new ArrayList, playerNewHand to represent the new hand that player receives after splitting.
+                // The remove(1) method is called on the ArrayList representing the player's current hand (at index 0 in playerHands list)
+                // which removes the second card from that hand and returns it.// card is then added to the playerNewHand list.
+                //The line playerHands.add(playerNewHand) adds the playerNewHand list to the end of the playerHands list,
+                // so that it becomes a separate hand for the player. effectively splits player's original hand into two separate hands.
 
                 case "split":
                     validAction = true;
@@ -128,9 +141,9 @@ public class BlackJack implements GameInterface {
         int numberOfAces = 0;
         for (int i = 0; i < hand.size(); i++) {
             // add each card's value to the total
-            // could implement a switch statement on the card's rank, with the value assigned for each rank
-            // with special handling for the ace - treat them as 11 initially, but keep track of how many there are,
-            // then if the total is > 21, subtract 10 iteratively for each ace until you get under 21 or run out of aces.
+            // switch statement on the card's rank, with the value assigned for each rank
+            // ace - treat them as 11 initially, but keep track of how many there are,
+            // if the total is > 21, subtract 10 iteratively for each ace until you get under 21 or run out of aces.
             Card.Rank rank = hand.get(i).getRank();
             switch (hand.get(i).getRank()) {
                 case TWO:
