@@ -4,6 +4,8 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
+import com.github.zipcodewilmington.casino.games.Klondike.KlondikePlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -155,7 +157,7 @@ public class Casino{
 
         // asks user for input
 
-        System.out.println(ANSI_RED + "Please input an option");
+        System.out.println("Please input an option");
 
         input1 = input.next().toLowerCase().charAt(0);
         switch (input1) {
@@ -170,7 +172,7 @@ public class Casino{
                 break;
 
             case 'd':
-                System.out.println(ANSI_RED + "How much do you want to deposit?");
+                System.out.println("How much do you want to deposit?");
                 int deposit = input.nextInt();
                 account.deposit(deposit);
                 System.out.println("Your balance is: " + account.getBalance());
@@ -216,7 +218,7 @@ public class Casino{
 
         // asks user for input
 
-        System.err.println(ANSI_RED + "Please input an option");
+        System.out.println(ANSI_RED + "Please input an option");
 
 
         input1 = input.next().toLowerCase().charAt(0);
@@ -242,7 +244,10 @@ public class Casino{
                 break;
 
             case 'k':
-                //klondike
+                Klondike klondike = new Klondike();
+                klondike.playGame(z);
+
+
                 break;
 
             case 'p':
@@ -317,7 +322,8 @@ public class Casino{
 
         }
 
-        System.out.println(CasinoAccountManager.accountList);
     }
+
+
 
 }
