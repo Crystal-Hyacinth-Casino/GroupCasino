@@ -176,7 +176,7 @@ public class Casino{
                 int deposit = input.nextInt();
                 account.deposit(deposit);
                 System.out.println("Your balance is: " + account.getBalance());
-                update(account);
+                CasinoAccount.update(account);
                 System.out.println(CasinoAccountManager.accountList);
                 delay();
                 checkinLobby(z);
@@ -292,14 +292,6 @@ public class Casino{
             throw new RuntimeException(e);
         }
         System.exit(0);
-    }
-
-    public void update(CasinoAccount account) {
-        for (int i = 0; i < CasinoAccountManager.accountList.size(); i++) {
-            if (userName2.equals(CasinoAccountManager.accountList.get(i).getUserName())) {
-                CasinoAccountManager.accountList.set(i, account);
-            }
-        }
     }
 
     public void read() throws FileNotFoundException {

@@ -61,6 +61,14 @@ public class CasinoAccount {
         this.balance = balance;
     }
 
+    public static void update(CasinoAccount account) {
+        for (int i = 0; i < CasinoAccountManager.accountList.size(); i++) {
+            if (account.getUserName().equals(CasinoAccountManager.accountList.get(i).getUserName())) {
+                CasinoAccountManager.accountList.set(i, account);
+            }
+        }
+    }
+
 
 
 }
