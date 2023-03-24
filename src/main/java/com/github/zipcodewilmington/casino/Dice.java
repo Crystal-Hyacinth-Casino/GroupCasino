@@ -20,4 +20,12 @@ public class Dice {
         }
         return diceThrowResults;
     }
+    public Integer diceThrowResults(Integer numberOfDice){
+        Integer sum = 0;
+        for(int i = 0; i < numberOfDice; i++){
+            sum += diceRoll();
+        }
+
+        return sum;
+    }
 }
