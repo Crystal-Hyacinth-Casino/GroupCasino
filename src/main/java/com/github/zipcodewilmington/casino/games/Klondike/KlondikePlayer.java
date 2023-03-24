@@ -7,13 +7,10 @@ public class KlondikePlayer extends CasinoAccount implements PlayerInterface {
     CasinoAccount casinoAccount;
 
     public KlondikePlayer(CasinoAccount casinoAccount){
-
         super(casinoAccount);
     }
-
     @Override
     public CasinoAccount getArcadeAccount() {
-
         return this;
     }
 

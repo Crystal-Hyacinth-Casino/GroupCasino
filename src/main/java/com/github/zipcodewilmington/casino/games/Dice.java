@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 public class Dice {
     private List<Dice> diceValues;
-    ArrayList<Integer> diceThrowResults = new ArrayList<>();
+    protected ArrayList<Integer> diceThrowResults = new ArrayList<>();
 
     public Integer diceRoll(){
         Integer diceResult = 0;
