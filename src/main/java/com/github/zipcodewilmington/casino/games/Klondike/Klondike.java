@@ -40,26 +40,24 @@ public class Klondike extends Dice implements IGamblingGame {
 
 
         Casino casino = new Casino();
+
         System.out.println("Welcome to the Klondike Table");
 
-
-        System.out.println("Press any key, and we'll start ROLLING, pun intended");
-        scan.nextLine();
-
-        System.out.println("Shake.. shake.. shake, boom!");
-
-        Casino.delay();
-        //dealer rolls dice
-        //diceThrow(5);
-
-        //slow rolls the rice for dramatic effect
-
-        //adds all the dices together.
-        chuckDealer = slowRoll();
-
-        System.out.println("Total:" + chuckDealer);
-
         while (true) {
+
+
+
+            System.out.println("Press any key, and we'll start ROLLING, pun intended");
+            scan.nextLine();
+
+            System.out.println("Shake.. shake.. shake, boom!");
+
+            Casino.delay();
+
+            chuckDealer = slowRoll();
+
+            System.out.println("Total:" + chuckDealer);
+
             System.out.println("Please enter bet amount or type 'main' to exit to main menu: ");
             String input2 = scan.next();
             if (input2.equalsIgnoreCase("main")) {
@@ -77,9 +75,11 @@ public class Klondike extends Dice implements IGamblingGame {
 
             boolean pizza = true;
 
-            diceThrow(5);
-            playerSlowRoll();
-            chuckPlayer = total();
+
+
+            chuckPlayer = slowRoll2();
+
+            System.out.println("Total:" + chuckPlayer);
 
             while (pizza) {
                 switch (input) {
@@ -88,26 +88,32 @@ public class Klondike extends Dice implements IGamblingGame {
                         pizza = false;
 
                         if (chuckPlayer > chuckDealer) {
-                            // hiep.deposit(Integer.parseInt(input2));
-                          System.out.println("You win!");
-                        } else
+                             hiep.deposit(Integer.parseInt(input2));
+                             System.out.println("You win!");
+                             System.out.println(hiep.getBalance());
+                             break;
+                        } else {
                             System.out.println("You lose!");
-                        // hiep.remove(Integer.parseInt(input2));
+                            hiep.remove(Integer.parseInt(input2));
+                            System.out.println(hiep.getBalance());
 
-                        break;
+                            break;
+                        }
                     case 'l':
                         System.out.println("You chose low");
                         pizza = false;
 
                         if(chuckPlayer < chuckDealer) {
-                           // hiep.deposit(Integer.parseInt(input2));
-                            System.out.println("You lose!");
-                        } else
-                            System.out.print("You win!");
-                          //  hiep.remove(Integer.parseInt(input2));
-
-
-                        break;
+                           hiep.deposit(Integer.parseInt(input2));
+                            System.out.println("You Win!");
+                            System.out.println(hiep.getBalance());
+                            break;
+                        } else {
+                            System.out.println("You Lose!");
+                            hiep.remove(Integer.parseInt(input2));
+                            System.out.println(hiep.getBalance());
+                            break;
+                        }
                     default:
                         System.out.println("High or Low, brother, is this your first time playing?");
 
@@ -134,7 +140,7 @@ public class Klondike extends Dice implements IGamblingGame {
 
     public int slowRoll(){
         int sum = 0;
-        for(int i = 0; i < diceThrow(5).size(); i++){
+        for(int i = 0; i < 5; i++){
             Dice diceSlowRoll = new Dice();
             Casino.delay();
             System.out.println("Roll " + (i+1) + " Dealer rolls a :" + diceSlowRoll.diceThrow(5).get(i));
@@ -143,13 +149,17 @@ public class Klondike extends Dice implements IGamblingGame {
         return sum;
     }
 
-    public void playerSlowRoll(){
-        for(int i = 0; i < diceThrowResults.size(); i++){
+    public int slowRoll2(){
+        int sum = 0;
+        for(int i = 0; i < 5; i++){
+            Dice diceSlowRoll = new Dice();
             Casino.delay();
-            System.out.println("Roll " + (i+1) + "rolls a :" + diceThrowResults.get(i));
-
+            System.out.println("Roll " + (i+1) + " Player rolls a :" + diceSlowRoll.diceThrow(5).get(i));
+            sum+=diceSlowRoll.diceThrow(5).get(i);
         }
+        return sum;
     }
+
 
     @Override
     public void add(PlayerInterface player) {

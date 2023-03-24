@@ -186,7 +186,6 @@ public class Casino{
                 gameLobby(z);
                 break;
             case 'q':
-
                 quit();
                 break;
 
