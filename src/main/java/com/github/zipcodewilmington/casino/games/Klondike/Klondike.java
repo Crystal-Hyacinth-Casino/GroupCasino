@@ -123,6 +123,7 @@ public class Klondike extends Dice implements IGamblingGame {
 
                 }
             }
+            scan.nextLine();
         }
     }
 
