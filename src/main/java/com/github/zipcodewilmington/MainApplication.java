@@ -1,6 +1,6 @@
 package com.github.zipcodewilmington;
 
-import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
+import com.github.zipcodewilmington.casino.games.Klondike;
 
 import java.io.FileNotFoundException;
 
