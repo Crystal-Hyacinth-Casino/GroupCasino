@@ -1,4 +1,4 @@
-package com.github.zipcodewilmington.casino.games.rps;
+package com.github.zipcodewilmington.casino.games.RPS;
 
-public class rpsPlayer {
+public class RpsPlayer {
 }

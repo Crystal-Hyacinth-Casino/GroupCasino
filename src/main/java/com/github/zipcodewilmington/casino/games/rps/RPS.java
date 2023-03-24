@@ -1,10 +1,11 @@
-package com.github.zipcodewilmington.casino.games.rps;
+package com.github.zipcodewilmington.casino.games.RPS;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class RPS {
+
     Scanner scanner = new Scanner(System.in);
 
     private static final String ROCK = "rock";
@@ -160,5 +161,10 @@ public class RPS {
             getWinner(this.playerChoice, this.dealerHand);
             playAgain();
         } while(isPlaying == true);
+    }
+    public static void main(String[] args) {
+        RPS rps = new RPS();
+        rps.play();
+
     }
 }
