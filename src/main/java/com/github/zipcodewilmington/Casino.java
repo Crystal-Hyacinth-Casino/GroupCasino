@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.Chuckaluck.Chuckaluck;
 import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
 import com.github.zipcodewilmington.casino.games.Klondike.KlondikePlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
@@ -234,7 +235,8 @@ public class Casino{
                 break;
 
             case 'c':
-                //chuckaluck
+                Chuckaluck chuckaluck = new Chuckaluck();
+                chuckaluck.playGame(account);
                 break;
 
             case 'r':
