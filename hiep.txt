@@ -1,1 +1,2 @@
 hiep,hiep,7500
+tim,tim,3000
