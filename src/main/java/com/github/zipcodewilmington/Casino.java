@@ -4,15 +4,19 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackGame;
+import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.Chuckaluck.Chuckaluck;
+import com.github.zipcodewilmington.casino.games.Chuckaluck.ChuckaluckPlayer;
 import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
 import com.github.zipcodewilmington.casino.games.Klondike.KlondikePlayer;
-import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
-import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
+import com.github.zipcodewilmington.casino.games.RPS.RPS;
+import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
+import com.github.zipcodewilmington.casino.games.Roulette.RouletteGame;
+import com.github.zipcodewilmington.casino.games.Roulette.RoulettePlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
-import com.github.zipcodewilmington.utils.AnsiColor;
-import com.github.zipcodewilmington.utils.IOConsole;
+import com.github.zipcodewilmington.utils.Common;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,7 +29,6 @@ public class Casino{
     static Scanner input = new Scanner(System.in);
     private String userName2;
     private String password2;
-    public final String ANSI_RED = "\u001B[31m";
 
 
     public void mainMenu() {
@@ -34,12 +37,12 @@ public class Casino{
 
        CasinoAccount newAccount = new CasinoAccount();
 
-        System.out.print("======================\n" +
-                "=     Main Menu      =\n"
+        System.out.print("======================\n"
+                + Common.cyan("=     Main Menu      =\n")
                 + "======================\n"
-                + "=      (L)ogin       =\n"
-                + "=  (C)reate Account  =\n"
-                + "=    (M)ore Info     =\n"
+                + Common.green("=      (L)ogin       =\n")
+                + Common.purple("=  (C)reate Account  =\n")
+                + Common.red("=    (M)ore Info     =\n")
                 + "======================\n");
 
 
@@ -79,11 +82,11 @@ public class Casino{
     public void moreInfo() {
         System.out.println(
                 "=================================\n"
-                        + "        Crystal Casino\n"
-                        + "          Created by  \n"
-                        + "Christa, Tim, Hiep, Andre, Jake\n"
+                        +Common.purple("        Crystal Casino\n")
+                        +Common.cyan("          Created by  \n")
+                        +Common.blue("Christa, Tim, Hiep, Andre, Jake\n")
                         + "\n"
-                        + "    ZipCode Wilmington 9.4");
+                        +Common.red("    ZipCode Wilmington 9.4"));
 
         //waits 1 second for next message
 
@@ -109,12 +112,12 @@ public class Casino{
 
 
         // while (true) {
-        System.out.print(ANSI_RED + "Please enter your username:");
+        System.out.print("Please enter your username:");
         userName2 = input.next();
 
         delay();
 
-        System.out.print(ANSI_RED + "Please enter your password:");
+        System.out.print("Please enter your password:");
         password2 = input.next();
 
         boolean loginCheck = false;
@@ -142,15 +145,15 @@ public class Casino{
 
 
     public void checkinLobby(CasinoAccount account) {
+
         System.out.print(
                 "==============================\n"
-                        + "=  Welcome to Check in Desk  =\n"
+                        +Common.purple("=  Welcome to Check in Desk  =\n")
                         + "==============================\n"
-                        + "= (E)nter Casino Game Lobby  =\n"
-                        + "=       (G)et Balance        =\n"
-                        + "=      (D)eposit Money       =\n"
-                        + "=        (M)ain Menu         =\n"
-                        + "=      (Q)uit and Save       =\n"
+                        +Common.blue("= (E)nter Casino Game Lobby  =\n")
+                        +Common.cyan("=       (G)et Balance        =\n")
+                        +Common.green("=      (D)eposit Money       =\n")
+                        +Common.red("=      (Q)uit and Save       =\n")
                         + "==============================\n");
 
         delay();
@@ -161,9 +164,6 @@ public class Casino{
 
         input1 = input.next().toLowerCase().charAt(0);
         switch (input1) {
-            case 'm':
-                mainMenu();
-                break;
 
             case 'g':
                 System.out.println("Your balance is: " + account.getBalance());
@@ -176,8 +176,6 @@ public class Casino{
                 int deposit = input.nextInt();
                 account.deposit(deposit);
                 System.out.println("Your balance is: " + account.getBalance());
-
-                System.out.println(CasinoAccountManager.accountList);
                 delay();
                 checkinLobby(account);
                 break;
@@ -202,22 +200,22 @@ public class Casino{
         System.out.println(account.getBalance());
         System.out.print(
                 "=================================\n"
-                        + "=     Welcome to Casino Lobby   =\n"
+                        +Common.purple("=     Welcome to Casino Lobby   =\n")
                         + "=================================\n"
-                        + "=          (B)lack Jack         =\n"
-                        + "=             (S)lots           =\n"
-                        + "=          (C)huckALuck         =\n"
-                        + "=           (R)oulette          =\n"
-                        + "=           (K)londike          =\n"
-                        + "=       (P)aperScissorRocks     =\n"
-                        + "=        (M)ain Menu/Quit       =\n"
+                        +Common.black("=          (B)lack Jack         =\n")
+                        +Common.blue("=             (S)lots           =\n")
+                        +Common.cyan("=          (C)huckALuck         =\n")
+                        +Common.green("=           (R)oulette          =\n")
+                        +Common.blue("=           (K)londike          =\n")
+                        +Common.cyan("=       (P)aperScissorRocks     =\n")
+                        +Common.red("=        (M)ain Menu/Quit       =\n")
                         + "=================================\n");
 
         delay();
 
         // asks user for input
 
-        System.out.println(ANSI_RED + "Please input an option");
+        System.out.println("Please input an option");
 
 
         input1 = input.next().toLowerCase().charAt(0);
@@ -227,30 +225,39 @@ public class Casino{
                 break;
 
             case 'b':
-                //blackjack()
+                BlackJackPlayer blackJackPlayer = new BlackJackPlayer(account);
+                play(new BlackJackGame(), blackJackPlayer);
+                account.setBalance(blackJackPlayer.getBalance());
                 break;
 
             case 's':
-                //slots();
+                SlotsPlayer slotsPlayer = new SlotsPlayer(account);
+                play(new SlotsGame(), slotsPlayer);
+                account.setBalance(slotsPlayer.getBalance());
                 break;
 
             case 'c':
-                Chuckaluck chuckaluck = new Chuckaluck();
-                chuckaluck.playGame(account);
+                ChuckaluckPlayer chuckaLuckPlayer = new ChuckaluckPlayer(account);
+                play(new Chuckaluck(), chuckaLuckPlayer);
+                account.setBalance(chuckaLuckPlayer.getBalance());
                 break;
 
             case 'r':
-                //roulette
+                RoulettePlayer roulettePlayer = new RoulettePlayer(account);
+                play(new RouletteGame(), roulettePlayer);
+                account.setBalance(roulettePlayer.getBalance());
                 break;
 
             case 'k':
-                Klondike klondike = new Klondike();
-                klondike.playGame(account);
-
+                KlondikePlayer klondikePlayer = new KlondikePlayer(account);
+                play(new Klondike(), klondikePlayer);
+                account.setBalance(klondikePlayer.getBalance());
                 break;
 
             case 'p':
-                //paperscissorrock
+                RpsPlayer rpsPlayer = new RpsPlayer(account);
+                play(new RPS(), rpsPlayer);
+                account.setBalance(rpsPlayer.getBalance());
                 break;
 
             default:
@@ -258,6 +265,15 @@ public class Casino{
 
         }
     }
+
+    private void play(Object gameObject, Object playerObject) {
+        GameInterface game = (GameInterface)gameObject;
+        PlayerInterface player = (PlayerInterface)playerObject;
+        game.add(player);
+        game.run();
+    }
+
+
 
     public static void delay() {
         try {

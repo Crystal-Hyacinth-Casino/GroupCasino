@@ -1,2 +1,5 @@
-hiep,hiep,7500
 tim,tim,3000
+raven,12345,800
+cashflow,123,10000
+ineedaGurl,hi,300
+jakeMcMuffin,152,50000

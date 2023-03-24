@@ -24,7 +24,7 @@ public class CasinoAccountManager {
 
         CasinoAccount newAccount = null;
 
-        System.out.println("Please pick a username");
+        System.out.println(ANSI_RED+ "Please pick a username");
         String user = input.next();
 
         System.out.println(ANSI_RED + "Please input a password");
@@ -59,7 +59,6 @@ public class CasinoAccountManager {
 
 
         accountList.add(newAccount);
-        System.out.println(accountList);
 
 
         return newAccount;

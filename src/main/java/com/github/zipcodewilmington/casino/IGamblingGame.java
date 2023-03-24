@@ -6,7 +6,7 @@ public interface IGamblingGame extends GameInterface{
 
     boolean isWinner();
 
-    int bet(int bet);
+    boolean bet(int bet);
 
     int payOut(int bet);
 }

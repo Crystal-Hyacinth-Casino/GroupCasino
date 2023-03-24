@@ -7,6 +7,7 @@ import com.github.zipcodewilmington.casino.IGamblingGame;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.Dice;
 import com.github.zipcodewilmington.utils.AnsiColor;
+import com.github.zipcodewilmington.utils.Common;
 import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public class Klondike extends Dice implements IGamblingGame {
 
 
-    List<KlondikePlayer> klondikePlayer = new ArrayList<>();
+
 
     Scanner scan = new Scanner(System.in);
     Integer chuckPlayer;
@@ -25,18 +26,13 @@ public class Klondike extends Dice implements IGamblingGame {
 
     Integer bet;
     char input = 'z';
+    List<PlayerInterface> playerList = new ArrayList<>();
+
+
 
     @Override
     public void run() {
 
-    }
-
-    public void playGame(CasinoAccount account) {
-        KlondikePlayer klondike = new KlondikePlayer(account);
-        System.out.println(klondike.getArcadeAccount());
-
-
-        CasinoAccount hiep = klondike.getArcadeAccount();
 
 
         Casino casino = new Casino();
@@ -62,7 +58,7 @@ public class Klondike extends Dice implements IGamblingGame {
             String input2 = scan.next();
             if (input2.equalsIgnoreCase("main")) {
                 System.out.println("Thanks for playing!");
-                casino.checkinLobby(hiep);
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
                 break;
             }
 
@@ -88,14 +84,14 @@ public class Klondike extends Dice implements IGamblingGame {
                         pizza = false;
 
                         if (chuckPlayer > chuckDealer) {
-                             hiep.deposit(Integer.parseInt(input2));
+                             playerList.get(0).getArcadeAccount().deposit(Integer.parseInt(input2));
                              System.out.println("You win!");
-                             System.out.println(hiep.getBalance());
+                             System.out.println(playerList.get(0).getArcadeAccount().getBalance());
                              break;
                         } else {
                             System.out.println("You lose!");
-                            hiep.remove(Integer.parseInt(input2));
-                            System.out.println(hiep.getBalance());
+                            playerList.get(0).getArcadeAccount().remove(Integer.parseInt(input2));
+                            System.out.println(playerList.get(0).getArcadeAccount().getBalance());
 
                             break;
                         }
@@ -104,14 +100,14 @@ public class Klondike extends Dice implements IGamblingGame {
                         pizza = false;
 
                         if(chuckPlayer < chuckDealer) {
-                           hiep.deposit(Integer.parseInt(input2));
+                           playerList.get(0).getArcadeAccount().deposit(Integer.parseInt(input2));
                             System.out.println("You Win!");
-                            System.out.println(hiep.getBalance());
+                            System.out.println(playerList.get(0).getArcadeAccount().getBalance());
                             break;
                         } else {
                             System.out.println("You Lose!");
-                            hiep.remove(Integer.parseInt(input2));
-                            System.out.println(hiep.getBalance());
+                            playerList.get(0).getArcadeAccount().remove(Integer.parseInt(input2));
+                            System.out.println(playerList.get(0).getArcadeAccount().getBalance());
                             break;
                         }
                     default:
@@ -143,8 +139,8 @@ public class Klondike extends Dice implements IGamblingGame {
         int sum = 0;
         for(int i = 0; i < 5; i++){
             Dice diceSlowRoll = new Dice();
-            Casino.delay();
-            System.out.println("Roll " + (i+1) + " Dealer rolls a :" + diceSlowRoll.diceThrow(5).get(i));
+            Common.delay();
+            System.out.println(Common.red("Roll " + (i+1) + ", Dealer rolls a: " + diceSlowRoll.diceThrow(5).get(i)));
             sum+=diceSlowRoll.diceThrow(5).get(i);
         }
         return sum;
@@ -154,8 +150,8 @@ public class Klondike extends Dice implements IGamblingGame {
         int sum = 0;
         for(int i = 0; i < 5; i++){
             Dice diceSlowRoll = new Dice();
-            Casino.delay();
-            System.out.println("Roll " + (i+1) + " Player rolls a :" + diceSlowRoll.diceThrow(5).get(i));
+            Common.delay();
+            System.out.println(Common.green("Roll " + (i+1) + ", Player rolls a: " + diceSlowRoll.diceThrow(5).get(i)));
             sum+=diceSlowRoll.diceThrow(5).get(i);
         }
         return sum;
@@ -164,14 +160,14 @@ public class Klondike extends Dice implements IGamblingGame {
 
     @Override
     public void add(PlayerInterface player) {
-        klondikePlayer.add((KlondikePlayer) player);
-
+        playerList.add(player);
     }
+
+
 
     @Override
     public void remove(PlayerInterface player) {
-        klondikePlayer.remove(player);
-
+        playerList.remove(player);
     }
 
 
@@ -184,8 +180,8 @@ public class Klondike extends Dice implements IGamblingGame {
     }
 
     @Override
-    public int bet(int bet) {
-    return 0;
+    public boolean bet(int bet) {
+    return false;
     }
 
     @Override

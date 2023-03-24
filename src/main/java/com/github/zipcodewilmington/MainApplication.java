@@ -12,14 +12,6 @@ public class MainApplication {
      Casino main = new Casino();
        main.read();
        main.mainMenu();
-      //  Klondike klondike = new Klondike();
-
-      // klondike.run();
-
-
-
-
-
 
 
     }
