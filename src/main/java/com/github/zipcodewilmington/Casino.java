@@ -7,6 +7,7 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuck;
 import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuckPlayer;
 import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
+import com.github.zipcodewilmington.casino.games.Klondike.KlondikePlayer;
 import com.github.zipcodewilmington.casino.games.RPS.RPS;
 //import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.Roulette.RouletteGame;
@@ -256,15 +257,16 @@ public class Casino{
                 break;
 
             case 'k':
-                Klondike klondike = new Klondike();
-                klondike.playGame(z);
+                KlondikePlayer klondikePlayer = new KlondikePlayer(account);
+                play(new Klondike(), klondikePlayer);
+                account.setBalance(klondikePlayer.getBalance());
                 break;
 
             case 'p':
 //                RpsPlayer rpsPlayer = new RpsPlayer(z);
 //                play(new RPS(), rpsPlayer);
 //                z.setBalance(rpsPlayer.getBalance());
-//                break;
+                break;
 
             default:
                 System.out.println("Invalid Input");
@@ -273,7 +275,7 @@ public class Casino{
     }
 
 
-    private void play(Object gameObject, Object playerObject) {
+    void play(Object gameObject, Object playerObject) {
         GameInterface game = (GameInterface)gameObject;
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);

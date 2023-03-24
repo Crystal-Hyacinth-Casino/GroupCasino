@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.Roulette;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.IGamblingGame;
 import com.github.zipcodewilmington.casino.PlayerInterface;
@@ -17,8 +18,10 @@ public class RouletteGame implements IGamblingGame {
     int bet;
     int betType;
     int betNumber;
+    int spinResult;
     Scanner sc = new Scanner(System.in);
     Random random = new Random();
+    Casino casino = new Casino();
 
     public RouletteGame() {
     }
@@ -36,12 +39,16 @@ public class RouletteGame implements IGamblingGame {
     @Override
     public void run() {
         while (true) {
+            if (playerList.get(0).getArcadeAccount().getBalance() == 0) {
+                System.out.println("You're a brokie. What colors your Bugatti... returning to main menu.");
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
+            }
             // Ask for bet amount
             System.out.println("Please enter bet amount or type 'quit' to exit: ");
             String input = sc.next();
             if (input.equalsIgnoreCase("quit")) {
                 System.out.println("Thanks for playing!");
-                break;
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
             }
 
             try {
@@ -50,6 +57,13 @@ public class RouletteGame implements IGamblingGame {
                 System.out.println("Invalid input, please try again.");
                 continue;
             }
+            if (this.bet(bet)){
+                System.out.println("You have insufficient funds. Current balance: " + playerList.get(0).getArcadeAccount().getBalance());
+                continue;
+            }
+            int currentBalance = playerList.get(0).getArcadeAccount().getBalance();
+            playerList.get(0).getArcadeAccount().setBalance(currentBalance - bet);
+            currentBalance = playerList.get(0).getArcadeAccount().getBalance();
 
             // Ask for bet type
             System.out.println("Choose your bet type:\n1. Red\n2. Black\n3. Single Number (0-36)\n4. Lower Third\n5. Middle Third\n6. Upper Third\n7. Lower Half\n8. Upper Half");
@@ -59,19 +73,23 @@ public class RouletteGame implements IGamblingGame {
                 System.out.println("Enter the number you want to bet on (0-36):");
                 betNumber = sc.nextInt();
             }
-
-            // Spin the wheel
-            int spinResult = spinWheel();
+            spinResult = spinWheel();
 
             // Check the result
             boolean isWinner = checkResult(spinResult);
+            int payOutAmount = payOut(bet);
+
             if (isWinner) {
                 System.out.println("Congratulations, you won!");
+                playerList.get(0).getArcadeAccount().setBalance(currentBalance + payOutAmount);
             } else {
                 System.out.println("Sorry, you lost.");
+                playerList.get(0).getArcadeAccount().setBalance(currentBalance);
             }
+            System.out.println(playerList.get(0).getArcadeAccount().getBalance());
         }
     }
+
 
     private int spinWheel() {
         return random.nextInt(37); // Returns a number between 0 and 36 (inclusive)
@@ -122,27 +140,24 @@ public class RouletteGame implements IGamblingGame {
 
     @Override
     public boolean isWinner() {
-        int spinResult = spinWheel();
         return checkResult(spinResult);
     }
 
     @Override
     public boolean bet(int betAmount) {
-        int currentBalance = playerList.get(0).getArcadeAccount().getBalance();
-        if (currentBalance >= betAmount) {
-            playerList.get(0).getArcadeAccount().setBalance(currentBalance - betAmount);
+        if (playerList.get(0).getArcadeAccount().getBalance() < betAmount){
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    @Override
     public int payOut(int bet) {
         int payOutAmount = 0;
         if (isWinner()) {
-            switch (betType) {
-                case 1: // Red
+            switch (betType)  {
+                case 1:// Red
+                    payOutAmount = bet * 2;
+                    break;
                 case 2: // Black
                     payOutAmount = bet * 2;
                     break;
@@ -150,17 +165,26 @@ public class RouletteGame implements IGamblingGame {
                     payOutAmount = bet * 36;
                     break;
                 case 4: // Lower third
+                    payOutAmount = bet * 3;
+                    break;
                 case 5: // Middle third
+                    payOutAmount = bet * 3;
+                    break;
                 case 6: // Upper third
                     payOutAmount = bet * 3;
                     break;
                 case 7: // Lower half
+                    payOutAmount = bet * 2;
+                    break;
                 case 8: // Upper half
                     payOutAmount = bet * 2;
                     break;
                 default:
                     payOutAmount = 0;
                     break;
+            }
+            if (payOutAmount == 0){
+                playerList.get(0).getArcadeAccount().getBalance();
             }
             int currentBalance = playerList.get(0).getArcadeAccount().getBalance();
             playerList.get(0).getArcadeAccount().setBalance(currentBalance + payOutAmount);
