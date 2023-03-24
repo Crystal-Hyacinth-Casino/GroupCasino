@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Klondike extends Dice implements IGamblingGame {
 
 
-    List<KlondikePlayer> klondikePlayer = new ArrayList<>();
+    List<PlayerInterface> playerList = new ArrayList<>();
 
     Scanner scan = new Scanner(System.in);
     Integer chuckPlayer;
@@ -153,18 +153,13 @@ public class Klondike extends Dice implements IGamblingGame {
 
     @Override
     public void add(PlayerInterface player) {
-        klondikePlayer.add((KlondikePlayer) player);
-
+        playerList.add(player);
     }
 
     @Override
     public void remove(PlayerInterface player) {
-        klondikePlayer.remove(player);
-
+        playerList.remove(player);
     }
-
-
-
 
     @Override
     public boolean isWinner() {
@@ -173,8 +168,8 @@ public class Klondike extends Dice implements IGamblingGame {
     }
 
     @Override
-    public int bet(int bet) {
-    return 0;
+    public boolean bet(int bet) {
+    return false;
     }
 
     @Override

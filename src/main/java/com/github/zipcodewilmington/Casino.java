@@ -4,8 +4,13 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuck;
+import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuckPlayer;
+import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
 import com.github.zipcodewilmington.casino.games.RPS.RPS;
 import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
+import com.github.zipcodewilmington.casino.games.Roulette.RouletteGame;
+import com.github.zipcodewilmington.casino.games.Roulette.RoulettePlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 
@@ -227,29 +232,32 @@ public class Casino{
                 break;
 
             case 'b':
-                //blackjack()
+//                BlackJackPlayer blackJackPlayer = new BlackJackPlayer(z);
+//                play(new BlackJackGame(), blackJackPlayer);
+//                z.setBalance(blackJackPlayer.getBalance());
                 break;
 
             case 's':
-
                 SlotsPlayer slotsPlayer = new SlotsPlayer(z);
                 play(new SlotsGame(), slotsPlayer);
                 z.setBalance(slotsPlayer.getBalance());
                 break;
 
             case 'c':
-                //chuckaluck
+                ChuckaLuckPlayer chuckaLuckPlayer = new ChuckaLuckPlayer(z);
+                play(new ChuckaLuck(), chuckaLuckPlayer);
+                z.setBalance(chuckaLuckPlayer.getBalance());
                 break;
 
             case 'r':
-                //roulette
+                RoulettePlayer roulettePlayer = new RoulettePlayer(z);
+                play(new RouletteGame(), roulettePlayer);
+                z.setBalance(roulettePlayer.getBalance());
                 break;
 
             case 'k':
                 Klondike klondike = new Klondike();
                 klondike.playGame(z);
-
-
                 break;
 
             case 'p':
