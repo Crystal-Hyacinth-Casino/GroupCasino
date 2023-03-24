@@ -1,16 +1,10 @@
 package com.github.zipcodewilmington.casino.games.RPS;
 
-import com.github.zipcodewilmington.Casino;
-import com.github.zipcodewilmington.casino.GameInterface;
-import com.github.zipcodewilmington.casino.PlayerInterface;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class RPS implements GameInterface {
-    List<PlayerInterface> playerList = new ArrayList<>();
+public class RPS {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -152,25 +146,13 @@ public class RPS implements GameInterface {
                 break;
             } else if (decision.equals("n")) {
                 this.isPlaying = false;
-                Casino casino = new Casino();
-                casino.checkinLobby(playerList.get(0).getArcadeAccount());
+                break;
             } else {
                 System.out.println("That is not a valid answer...");
             }
         }
     }
-
-    @Override
-    public void add(PlayerInterface player) {
-        playerList.add(player);
-    }
-
-    @Override
-    public void remove(PlayerInterface player) {
-        playerList.remove(player);
-    }
-
-    public void run(){
+    public void play(){
         isPlaying = true;
         do {
             displayRules();
@@ -180,5 +162,9 @@ public class RPS implements GameInterface {
             playAgain();
         } while(isPlaying == true);
     }
+    public static void main(String[] args) {
+        RPS rps = new RPS();
+        rps.play();
 
+    }
 }
