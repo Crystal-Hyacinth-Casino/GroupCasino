@@ -8,7 +8,7 @@ import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuck;
 import com.github.zipcodewilmington.casino.games.ChuckaLuck.ChuckaLuckPlayer;
 import com.github.zipcodewilmington.casino.games.Klondike.Klondike;
 import com.github.zipcodewilmington.casino.games.RPS.RPS;
-import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
+//import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.Roulette.RouletteGame;
 import com.github.zipcodewilmington.casino.games.Roulette.RoulettePlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -261,10 +261,10 @@ public class Casino{
                 break;
 
             case 'p':
-                RpsPlayer rpsPlayer = new RpsPlayer(z);
-                play(new RPS(), rpsPlayer);
-                z.setBalance(rpsPlayer.getBalance());
-                break;
+//                RpsPlayer rpsPlayer = new RpsPlayer(z);
+//                play(new RPS(), rpsPlayer);
+//                z.setBalance(rpsPlayer.getBalance());
+//                break;
 
             default:
                 System.out.println("Invalid Input");
