@@ -1,12 +1,12 @@
-package com.github.zipcodewilmington.casino.games.RPS;
+package com.github.zipcodewilmington.casino.games.Klondike;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
-public class RpsPlayer extends CasinoAccount implements PlayerInterface {
+public class KlondikePlayer extends CasinoAccount implements PlayerInterface {
     CasinoAccount casinoAccount;
 
-    public RpsPlayer(CasinoAccount casinoAccount){
+    public KlondikePlayer(CasinoAccount casinoAccount){
 
         super(casinoAccount);
     }

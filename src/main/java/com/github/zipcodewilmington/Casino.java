@@ -4,12 +4,10 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
-import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
-import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
+import com.github.zipcodewilmington.casino.games.RPS.RPS;
+import com.github.zipcodewilmington.casino.games.RPS.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
-import com.github.zipcodewilmington.utils.AnsiColor;
-import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -237,8 +235,6 @@ public class Casino{
                 SlotsPlayer slotsPlayer = new SlotsPlayer(z);
                 play(new SlotsGame(), slotsPlayer);
                 z.setBalance(slotsPlayer.getBalance());
-
-                //slots();
                 break;
 
             case 'c':
@@ -254,7 +250,9 @@ public class Casino{
                 break;
 
             case 'p':
-                //paperscissorrock
+                RpsPlayer rpsPlayer = new RpsPlayer(z);
+                play(new RPS(), rpsPlayer);
+                z.setBalance(rpsPlayer.getBalance());
                 break;
 
             default:

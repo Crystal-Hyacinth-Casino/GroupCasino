@@ -1,12 +1,14 @@
-package com.github.zipcodewilmington.casino.games;
+package com.github.zipcodewilmington.casino.games.Klondike;
 
 import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
+import com.github.zipcodewilmington.casino.IGamblingGame;
+import com.github.zipcodewilmington.casino.games.Dice;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Klondike extends Dice {
+public class Klondike extends Dice implements IGamblingGame {
     //ArrayList<Player> klondike = new ArrayList<Player>();
     Scanner scan = new Scanner(System.in);
     CasinoAccountManager CAM = new CasinoAccountManager();

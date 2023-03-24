@@ -85,7 +85,8 @@ public class SlotsGame implements IGamblingGame {
             String input = sc.next();
             if (input.equalsIgnoreCase("quit")) {
                 System.out.println("Thanks for playing!");
-                break;
+                Casino casino = new Casino();
+                casino.checkinLobby(playerList.get(0).getArcadeAccount());
             }
             try {
                 bet = Integer.parseInt(input);
@@ -107,6 +108,7 @@ public class SlotsGame implements IGamblingGame {
             }
             int currentBalance = playerList.get(0).getArcadeAccount().getBalance();
             playerList.get(0).getArcadeAccount().setBalance(currentBalance + this.payOut(bet));
+            System.out.println(playerList.get(0).getArcadeAccount().getBalance() + " is your balance currently.");
         }
     }
 

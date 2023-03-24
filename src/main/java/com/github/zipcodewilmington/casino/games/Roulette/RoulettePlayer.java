@@ -1,12 +1,15 @@
-package com.github.zipcodewilmington.casino.games.RPS;
+package com.github.zipcodewilmington.casino.games.Roulette;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
-public class RpsPlayer extends CasinoAccount implements PlayerInterface {
+/**
+ * Created by leon on 7/21/2020.
+ */
+public class RoulettePlayer extends CasinoAccount implements PlayerInterface {
     CasinoAccount casinoAccount;
 
-    public RpsPlayer(CasinoAccount casinoAccount){
+    public RoulettePlayer(CasinoAccount casinoAccount){
 
         super(casinoAccount);
     }
