@@ -141,7 +141,6 @@ public class Casino{
 
 
     public void checkinLobby(CasinoAccount account) {
-        CasinoAccount z = account;
         System.out.print(
                 "==============================\n"
                         + "=  Welcome to Check in Desk  =\n"
@@ -168,7 +167,7 @@ public class Casino{
             case 'g':
                 System.out.println("Your balance is: " + account.getBalance());
                 delay();
-                checkinLobby(z);
+                checkinLobby(account);
                 break;
 
             case 'd':
@@ -176,16 +175,17 @@ public class Casino{
                 int deposit = input.nextInt();
                 account.deposit(deposit);
                 System.out.println("Your balance is: " + account.getBalance());
-                CasinoAccount.update(account);
+
                 System.out.println(CasinoAccountManager.accountList);
                 delay();
-                checkinLobby(z);
+                checkinLobby(account);
                 break;
 
             case 'e':
-                gameLobby(z);
+                gameLobby(account);
                 break;
             case 'q':
+                CasinoAccount.update(account);
                 quit();
                 break;
 
@@ -198,8 +198,7 @@ public class Casino{
     }
 
     public void gameLobby(CasinoAccount account) {
-        CasinoAccount z = account;
-        System.out.println(z.getBalance());
+        System.out.println(account.getBalance());
         System.out.print(
                 "=================================\n"
                         + "=     Welcome to Casino Lobby   =\n"
@@ -244,8 +243,7 @@ public class Casino{
 
             case 'k':
                 Klondike klondike = new Klondike();
-                klondike.playGame(z);
-
+                klondike.playGame(account);
 
                 break;
 
@@ -293,6 +291,7 @@ public class Casino{
         }
         System.exit(0);
     }
+
 
     public void read() throws FileNotFoundException {
         Scanner read = new Scanner(new File("hiep.txt"));
